@@ -1,0 +1,4 @@
+import { CheckCheck, Info } from 'lucide-react';
+import { getConsensus } from '../utils/consensus';
+import Math from './Math';
+export default function ConsensusCard({results}){const c=getConsensus(results);return <section className="consensus-card"><div className="consensus-main"><span className="consensus-icon"><CheckCheck size={23}/></span><div><div className="eyebrow">Жауаптардың сәйкестігі</div><h3>{c.total} модельдің {c.count} жауабы сәйкес</h3><p>{c.differ?'Жауаптар әртүрлі. Соңғы жауапты таңдамас бұрын әр шешімді тексеріңіз.':c.completed<c.total?'Қалған модельдердің жауабы күтілуде.':'Төрт модельдің жауабы бірдей.'}</p></div></div><div className="common-answer"><span>{c.tied?'Ортақ жауап жоқ':'Ең жиі кездескен жауап'}</span>{c.answer&&!c.tied&&<Math>{c.answer}</Math>}</div><div className="agreement"><div className="ring" style={{'--progress':`${c.percentage}%`}}><span>{c.percentage}%</span></div><span>Модельдер сәйкестігі</span></div></section>;}
