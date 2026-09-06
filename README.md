@@ -26,8 +26,6 @@ Get an API key at [openrouter.ai/keys](https://openrouter.ai/keys).
 
 > **Security note:** The API key is injected at build time and will be visible in the published JavaScript bundle. For a public repository, anyone can extract and use it. Consider rotating your key regularly and setting spending limits on OpenRouter. For production use, prefer a backend proxy (Cloudflare Worker) to keep the key secret.
 
-Change the GitHub link in `src/components/Header.jsx` to your repository URL when available.
-
 ## How it works
 
 - Image is converted to base64 in the browser and sent to OpenRouter vision models.
@@ -46,3 +44,5 @@ Image selection supports PNG/JPG/WEBP up to 10 MB, drag/drop and clipboard paste
 | Grok     | `x-ai/grok-2-vision-1212` |
 
 Edit `src/config/providers.js` to change models.
+
+Live site: https://titskz.github.io/math-ai/
