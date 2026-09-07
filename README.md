@@ -40,8 +40,8 @@ Image selection supports PNG/JPG/WEBP up to 10 MB, drag/drop and clipboard paste
 |----------|----------|
 | ChatGPT  | `openai/gpt-4o-mini` |
 | DeepSeek | `deepseek/deepseek-v4-flash-vision-exp` |
-| Claude   | `anthropic/claude-3.5-sonnet` |
-| Grok     | `x-ai/grok-2-vision-1212` |
+| Claude   | `anthropic/claude-sonnet-4.5` |
+| Grok     | `x-ai/grok-4.3` |
 
 Edit `src/config/providers.js` to change models.
 

@@ -1,8 +1,8 @@
 export const PROVIDERS = [
   { name: 'ChatGPT', model: 'openai/gpt-4o-mini' },
   { name: 'DeepSeek', model: 'deepseek/deepseek-v4-flash-vision-exp' },
-  { name: 'Claude', model: 'anthropic/claude-3.5-sonnet' },
-  { name: 'Grok', model: 'x-ai/grok-2-vision-1212' },
+  { name: 'Claude', model: 'anthropic/claude-sonnet-4.5' },
+  { name: 'Grok', model: 'x-ai/grok-4.3' },
 ];
 
 export const PROVIDER_NAMES = PROVIDERS.map((p) => p.name);

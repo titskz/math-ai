@@ -9,18 +9,22 @@ function parseModelJson(content) {
   const cleaned = content.replace(/```json\s*/gi, '').replace(/```/g, '').trim();
   const match = cleaned.match(/\{[\s\S]*\}/);
   if (!match) throw new Error('JSON табылмады');
-  const parsed = JSON.parse(match[0]);
-  if (!parsed.answer || !Array.isArray(parsed.solution)) {
-    throw new Error('Жауап форматы дұрыс емес');
+  try {
+    const parsed = JSON.parse(match[0]);
+    if (!parsed.answer || !Array.isArray(parsed.solution)) {
+      throw new Error('Жауап форматы дұрыс емес');
+    }
+    return {
+      answer: String(parsed.answer),
+      method: String(parsed.method || 'Қадамдық шешу'),
+      solution: parsed.solution.map((step) => ({
+        text: String(step.text || ''),
+        math: String(step.math || ''),
+      })),
+    };
+  } catch {
+    throw new Error('JSON парсинг қатесі');
   }
-  return {
-    answer: String(parsed.answer),
-    method: String(parsed.method || 'Қадамдық шешу'),
-    solution: parsed.solution.map((step) => ({
-      text: String(step.text || ''),
-      math: String(step.math || ''),
-    })),
-  };
 }
 
 async function askProvider(provider, imageBase64, signal) {
