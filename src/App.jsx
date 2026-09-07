@@ -10,6 +10,8 @@ import AiResultCard from './components/AiResultCard';
 import { solveProblem } from './data/solveProblem';
 import { imageToBase64 } from './utils/image';
 import { PROVIDER_NAMES } from './config/providers';
+import PromoCodeModal from './components/PromoCodeModal';
+import { getPromoSession } from './data/promoCodes';
 
 const initialResults = () => PROVIDER_NAMES.map((provider) => ({ provider, status: 'loading' }));
 
@@ -20,6 +22,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [toast, setToast] = useState('');
+  const [promoSession, setPromoSession] = useState(() => getPromoSession());
   const controllers = useRef(new Set());
   const generation = useRef(0);
   const toastTimer = useRef();
@@ -159,6 +162,7 @@ export default function App() {
 
   return (
     <div className={`app ${dark ? 'dark' : ''}`}>
+      {!promoSession && <PromoCodeModal onSuccess={setPromoSession} />}
       <Header dark={dark} onToggle={() => setDark((v) => !v)} />
       <main>
         <Hero />
